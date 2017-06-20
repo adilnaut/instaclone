@@ -1,0 +1,6 @@
+<%= form_for @post, html: {multipart: true} do |f| %>
+  <%= f.number_field :user_id, placeholder: "user_id" %>
+  <%= f.text_field :description %>
+  <%= f.file_field :image %>
+  <%= f.submit "Post" %>
+<% end %>

@@ -10,6 +10,14 @@
 
   <body>
     <%= render "partials/header" %>
+      <% flash.each do |key, value| %>
+        <div class="panel panel-<%= key%>" >
+          <div class="panel-heading">
+            <%= value %>
+          </div>
+        </div>
+
+      <% end %>
     <div class="container">
       <%= yield %>
     </div>

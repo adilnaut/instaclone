@@ -1,1 +1,11 @@
 <% provide :title, "Home" %>
+
+<div class="container">
+  <% @posts.each do |post| %>
+    <%= image_tag post.image(:large) %>
+
+    <h3>
+      <%= post.description %>
+    </h3>
+  <% end %>
+</div>
