@@ -9,12 +9,15 @@ class SessionsController < ApplicationController
       sign_in user
       redirect_to user
     else
-      flash[:danger] = "Invalid login/password"
+      flash.now[:danger] = "Invalid login/password"
       render "new"
     end
   end
 
   def destroy
+    # sign_out if signed_in?
+    sign_out
+    redirect_to root_path
   end
 
 end

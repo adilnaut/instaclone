@@ -30,3 +30,15 @@
   }
 
 }
+.container {
+  position: relative;
+}
+.header_right{
+  right: 0;
+  position: absolute;
+  display: inline-block;
+}
+.header_left{
+  position: absolute;
+  display: inline-block;
+}

@@ -1,11 +1,27 @@
 <% provide :title, "Home" %>
 
 <div class="container">
-  <% @posts.each do |post| %>
-    <%= image_tag post.image(:large) %>
+  <div class="row">
+    <div class="col-lg-6 col-lg-offset-3">
+      <% if signed_in? %>
+        <% @posts.each do |post| %>
+          <%= image_tag post.image(:large) %>
+          <div class="like-status" id="like-<%= post.id %>">
+            <% if current_user.likes?(post.id) %>
+              <%= render("partials/unlike", post: post) %>
+            <% else %>
+            <%= render("partials/like", post: post) %>
+            <% end %>
+            <span class = "likes">
+              likes: <%= post.likes.count %>
+            </span>
+          </div>
 
-    <h3>
-      <%= post.description %>
-    </h3>
-  <% end %>
+          <h3>
+            <%= post.description %>
+          </h3>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
 </div>

@@ -1,23 +1,41 @@
-<h2> <%= @user.login %></h2>
+<div class="container">
+  <div class="row">
 
-<span class = "followers">
-  Followers: <%= @user.followers.count %>
-</span>
+    <%= image_tag @user.avatar(:thumbnail), class: "img-circle" %>
+    <h2> <%= @user.login %></h2>
 
-<span class = "followeds">
-  Followeds: <%= @user.followed_users.count %>
-</span>
 
-<div class="follow_status">
-  <%= render "partials/follow_status" %>
+
+    <span class = "followers">
+      Followers: <%= @user.followers.count %>
+    </span>
+
+
+    <span class = "followeds">
+      Followeds: <%= @user.followed_users.count %>
+    </span>
+
+
+
+    <div class="follow_status">
+        <%= render "partials/follow_status" %>
+    </div>
+
+    <% if current_user? @user %>
+      <h3>   <%= link_to "New Post", newpost_path, method: :get %> </h3>
+    <% end %>
+
+
+    <% @posts.each do |post| %>
+      <%= image_tag post.image(:large) %>
+
+      <h3>
+        <%= post.description %>
+      </h3>
+
+      
+
+
+    <% end %>
+  </div>
 </div>
-
-
-<% @posts.each do |post| %>
-  <%= image_tag post.image(:large) %>
-
-    <h3>
-      <%= post.description %>
-    </h3>
-
-<% end %>

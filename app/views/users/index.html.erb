@@ -1,7 +1,8 @@
 <ul class="list-group">
   <% @users.each do |user| %>
     <li class="list-group-item">
-      <%= image_tag "http://placehold.it/60x60", class: "img-circle" %>
+      <!--<%= image_tag "http://placehold.it/60x60", class: "img-circle" %> !-->
+      <%= image_tag user.avatar(:thumbnail), class: "img-circle" %>
       <%= link_to user.login, user%>
 
 
