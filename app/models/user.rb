@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   before_create :create_remember_token
   has_secure_password
-  has_attached_file :avatar, styles: {thumbnail: "60x60", large:"600x600"}
+  has_attached_file :avatar, styles: {thumbnail: "60x60", large:"200x200"}
   has_many :posts
   has_many :relationships, foreign_key: "follower_id", dependent: :destroy
   has_many :followed_users, through: :relationships, source:  :followed

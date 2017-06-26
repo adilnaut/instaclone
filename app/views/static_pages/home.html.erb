@@ -5,21 +5,48 @@
     <div class="col-lg-6 col-lg-offset-3">
       <% if signed_in? %>
         <% @posts.each do |post| %>
-          <%= image_tag post.image(:large) %>
-          <div class="like-status" id="like-<%= post.id %>">
-            <% if current_user.likes?(post.id) %>
-              <%= render("partials/unlike", post: post) %>
-            <% else %>
-            <%= render("partials/like", post: post) %>
-            <% end %>
-            <span class = "likes">
-              likes: <%= post.likes.count %>
-            </span>
-          </div>
+            <div class="post">
 
-          <h3>
-            <%= post.description %>
-          </h3>
+              <% post_user = User.find_by_id(post.user_id)%>
+              <div class="post_header">
+                <h4>
+                  <%= image_tag post_user.avatar(:thumbnail), class: "img-circle" %>
+                  <%= link_to post_user.login, post_user%>
+                </h4>
+              </div>
+
+              <%= image_tag post.image(:large), class:"post-images"%>
+
+
+              <div class="like-status" id="like-<%= post.id %>">
+                  <% if current_user.likes?(post.id) %>
+                    <%= render("partials/unlike", post: post) %>
+                  <% else %>
+                    <%= render("partials/like", post: post) %>
+                  <% end %>
+
+              </div>
+              <div class="row">
+                <h4>
+                  <div class="col-lg-12">
+                    <div class="col-custom-2">
+                      <%= link_to post_user.login, post_user%>:
+                    </div>
+                    <div class="col-custom-2">
+                      <%= post.description %>
+
+                    </div>
+                  </div>
+                </h4>
+              </div>
+
+
+
+
+
+
+              
+            </div>
         <% end %>
       <% end %>
     </div>

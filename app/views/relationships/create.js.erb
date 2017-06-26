@@ -1,1 +1,2 @@
-$(".follow_status").html( " <%= escape_javascript( render('partials/unfollow') )%> " );
+$("#follow-<%= @user.id %>").html( " <%= escape_javascript( render('partials/unfollow', user: @user) )%> " );
+$(".follow_info").html( " <%= escape_javascript( render('partials/follow_info', user: @user) )%> " );

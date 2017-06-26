@@ -7,20 +7,20 @@
 
 
       <div class="pull-right">
-        <button class="btn btn-primary"> Follow </button>
-        <%= link_to "Edit", edit_user_path(user) %> |
-        <%= link_to "Delete", user_path(user), method: :delete, data: {confirm: "R U sure?"} %>
+        
+        <div class="follow_status"  id="follow-<%=user.id%>">
+          <% if current_user.following?(user.id) %>
+            <%= render("partials/unfollow", user: user) %>
+          <% else %>
+            <%= render("partials/follow", user: user) %>
+          <% end %>
+
+
+        </div>
+
       </div>
-      <!--
 
 
-
-        <%= link_to "Edit", edit_user_path(user) %>  |
-        <%= link_to "Delete", user_path(user), method: :delete, data: {confirm: "R U sure?"} %>
-
-
-
-      !-->
     </li>
 
   <% end %>

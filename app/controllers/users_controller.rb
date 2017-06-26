@@ -1,8 +1,10 @@
 class UsersController < ApplicationController
-
   before_action :set_user, only: [:show, :destroy, :edit, :update]
 
   def index
+    if !signed_in?
+      redirect_to signin_path
+    end
     @users = User.all
   end
 

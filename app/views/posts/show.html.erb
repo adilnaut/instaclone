@@ -1,6 +1,13 @@
-<%= image_tag @post.image(:large) %>
 
 <h3>
    <%= @post.description %>
-   
 </h3>
+  <% post_user = User.find_by_id(@post.user_id)%>
+<div class="post_header">
+  <h4>
+    <%= image_tag post_user.avatar(:thumbnail), class: "img-circle" %>
+    <%= link_to post_user.login, post_user%>
+  </h4>
+</div>
+
+<%= image_tag @post.image(:large) %>

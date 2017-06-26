@@ -42,3 +42,40 @@
   position: absolute;
   display: inline-block;
 }
+.page-avatar{
+  height:170px;
+  width: 170px;
+}
+
+.custom-row {
+  display: flex;
+}
+
+.custom-col {
+  flex: 1;
+  margin: 15px;
+  position: relative;
+}
+.post-images {
+  width:100%;
+}
+.like-status{
+  padding-top: 1%;
+  padding-left: 0%;
+}
+.custom-col img {
+
+  width: 100%;
+
+  border: 1px solid black;
+}
+.col-custom-2 {
+  display: inline-block;
+}
+.post {
+  border: 1px solid rgb(230,230,230);
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  padding-left:5px;
+  padding-right:5px;
+}

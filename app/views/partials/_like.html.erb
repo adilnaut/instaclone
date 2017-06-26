@@ -1,1 +1,5 @@
 <%= link_to "Like", likes_path(post_id: post.id), method: :post, remote:true, class: "btn btn-large btn-primary" %>
+
+<span class = "likes">
+  likes: <%= post.likes.count %>
+</span>

@@ -1,41 +1,77 @@
 <div class="container">
   <div class="row">
 
-    <%= image_tag @user.avatar(:thumbnail), class: "img-circle" %>
-    <h2> <%= @user.login %></h2>
+    <div class="col-lg-10 col-lg-offset-1">
+      <div class="row">
+        <div class="col-lg-3">
+          <%= image_tag @user.avatar(:large), class: "img-circle page-avatar"%>
+        </div>
+        <div class="col-lg-3">
+          <h2> <%= @user.login %></h2>
+          <div class="follow_info">
+            <span class = "followers">
+              Followers: <%= @user.followers.count %>
+            </span>
+            <span class = "followeds">
+              Followeds: <%= @user.followed_users.count %>
+            </span>
+          </div>
 
 
 
-    <span class = "followers">
-      Followers: <%= @user.followers.count %>
-    </span>
+
+          <div class="follow_status"  id="follow-<%=@user.id%>">
+            <% if current_user.following?(@user.id) %>
+              <%= render("partials/unfollow", user: @user) %>
+            <% else %>
+              <%= render("partials/follow", user: @user) %>
+            <% end %>
+          </div>
+        </div>
+        <div class="col-lg-6">
+        </div>
+      </div>
+
+      <% if current_user? @user %>
+        <h3>   <%= link_to "New Photo", newpost_path, method: :get %> </h3>
+      <% end %>
+
+      <% iteration = 0%>
+      <% switch = false %>
+      <% @posts.each do |post| %>
+
+        <% if iteration %3 == 0 %>
+         <% if switch %>
+           </div>
+         <%end %>
+          <div class="custom-row">
+        <% end %>
+        <div class="custom-col">
+          <h3>
+            <%= post.description %>
+          </h3>
+          <%= image_tag post.image(:large) %>
+          <div class="like-status" id="like-<%= post.id %>">
+            <% if current_user.likes?(post.id) %>
+              <%= render("partials/unlike", post: post) %>
+            <% else %>
+              <%= render("partials/like", post: post) %>
+            <% end %>
+
+          </div>
+          <hr>
 
 
-    <span class = "followeds">
-      Followeds: <%= @user.followed_users.count %>
-    </span>
 
+        </div>
+        <% switch = true%>
+        <% iteration = iteration + 1%>
 
-
-    <div class="follow_status">
-        <%= render "partials/follow_status" %>
+      <% end %>
+      <% for i in 1..(3 - iteration%3)  %>
+      <div class="custom-col">
+      </div>
+      <% end %>
     </div>
-
-    <% if current_user? @user %>
-      <h3>   <%= link_to "New Post", newpost_path, method: :get %> </h3>
-    <% end %>
-
-
-    <% @posts.each do |post| %>
-      <%= image_tag post.image(:large) %>
-
-      <h3>
-        <%= post.description %>
-      </h3>
-
-      
-
-
-    <% end %>
   </div>
 </div>
