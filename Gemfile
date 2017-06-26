@@ -13,7 +13,7 @@ group :development, :test do
   gem 'sqlite3', '1.3.13'
 end
 group	:production	do
-		gem	'pg',	'0.17.1'
+		gem	'pg',	'0.18'
 		gem	'rails_12factor',	'0.0.2'
 end
 
