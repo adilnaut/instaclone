@@ -1,5 +1,20 @@
 <%= form_for @post, html: {multipart: true} do |f| %>
-  <%= f.text_field :description %>
-  <%= f.file_field :image %>
+<div class="row">
+  <div class="col-md-1">
+    Description:
+  </div>
+  <div class="col-md-6">
+    <%= f.text_field :description %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-1">
+    Image:
+  </div>
+  <div class="col-md-6">
+    <%= f.file_field :image %>
+  </div>
+</div>
   <%= f.submit "Post" %>
 <% end %>
